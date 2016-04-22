@@ -31,7 +31,7 @@ public class Beleg1{
     //TODO END A1
     
     private static void initialisiereBaustelle(){
-        //Initialisiere Szenario (Strasse + 2 Lagerplätze)
+        //Initialisiere Szenario (Strasse + 2 Lagerplï¿½tze)
         baustrasse = new Baustrasse(0,100,400,100,40);
         baustrasse.AddSegment(700,90);       
         baustrasse.setVisible(true);
@@ -63,7 +63,7 @@ public class Beleg1{
         for(int i = 0; i < lkwAnzahl; i++){
             
             //TODO BEGIN A3 
-            LKW lkw;//Variablenname für LKW: lkw
+            LKW lkw;//Variablenname fï¿½r LKW: lkw
             lkw = new LKW(0,100,0); // diese Zeile ersetzen/aendern
             lkw.setMaxZuladung(25);
             lkw.setGeschwindigkeit(5);
@@ -72,7 +72,7 @@ public class Beleg1{
                         
             nochPlatz = true; //Boolsche Variable die beschreibt, ob der LKW weitere Materialien aufnehmen kann
            
-            //Do-While-Schleife die LKW mit Materialien belädt, solange dieser noch Material aufnehmen kann
+            //Do-While-Schleife die LKW mit Materialien belï¿½dt, solange dieser noch Material aufnehmen kann
             
                    double ent;
                    ent = (double)(Math.random()*(1));
@@ -82,7 +82,7 @@ public class Beleg1{
                    
                    double gewichtSchauf;
                    
-                   double gewichtWäre;
+                   double gewichtWï¿½re;
                    
                  
                    
@@ -111,7 +111,7 @@ public class Beleg1{
                     }
                    
                     
-                 gewichtWäre = gewichtIst+gewichtSchauf;
+                 gewichtWï¿½re = gewichtIst+gewichtSchauf;
                                  
                      
                
@@ -121,9 +121,9 @@ public class Beleg1{
             
                 
                 //TODO BEGIN A5
-                if( gewichtWäre <= lkw.getMaxZuladung()){  //TODO END A5
+                if( gewichtWï¿½re <= lkw.getMaxZuladung()){  //TODO END A5
                     
-                    gewichtIst= gewichtWäre;
+                    gewichtIst= gewichtWï¿½re;
                     material.setGewicht(gewichtSchauf);
                     material.setVolumen(vol);
                     lkw.beladen(material);
@@ -133,7 +133,7 @@ public class Beleg1{
                 
             } while(nochPlatz);
             
-            //LKW fährt zum ersten Lagerplatz   
+            //LKW fï¿½hrt zum ersten Lagerplatz   
             lkw.fahre(170);
             
             //Abladen von Material Sand am ersten Lagerplatz
@@ -148,7 +148,7 @@ public class Beleg1{
                 }
             }
              
-            //LKW fährt zum zweiten Lagerplatz
+            //LKW fï¿½hrt zum zweiten Lagerplatz
             lkw.fahre(230);
             lkw.drehen(90);
             lkw.fahre(300);
@@ -165,7 +165,7 @@ public class Beleg1{
                 }
             }
             
-            //LKW verlässt Baustelle
+            //LKW verlï¿½sst Baustelle
             lkw.fahre(400);
             lkw.setVisible(false);
         }
@@ -173,24 +173,35 @@ public class Beleg1{
     
     private static void erzeugeAusgabe(int lkwAnzahl){
         //TODO A6
-         System.out.println("Gefahrene LKW: " + lkwAnzahl);
-         
-        
-         lagerplatz1.getMaterialListe();
-          //Lagerplatz 1: Sand 
-         System.out.println("Lagerplatz 1: Sand");
-         
-         System.out.println(lagerplatz1.getMaterialAnzahl());
-      
-        // System.out.println("Gesamtvolumen: "+ volumenSand);
-         //System.out.println("Gesamtgewicht: "+ gewichtSand);
-         //Lagerplatz 2: Ziegel
-         System.out.println("Lagerplatz : Ziegel");
-         
-          
-         System.out.println(lagerplatz2.getMaterialAnzahl());
-         //System.out.println("Gesamtvolumen: "+ volumenZiegel);
-        // System.out.println("Gesamtgewicht: "+ gewichtZiegel);
+        System.out.println("Gefahrene LKW: " + lkwAnzahl);
+
+        //Lagerplatz 1: Sand
+        System.out.println("Lagerplatz 1: Sand");
+
+        double gesamtGewicht1 = 0;
+        double gesamtVolumen1 = 0;
+
+        for (Material mat : lagerplatz1.getMaterialListe()) {
+            gesamtGewicht1 += mat.getGewicht();
+            gesamtVolumen1 += mat.getVolumen();
+        }
+
+        System.out.println("Gesamtvolumen: " + gesamtVolumen1);
+        System.out.println("Gesamtgewicht: " + gesamtGewicht1);
+
+        //Lagerplatz 2: Ziegel
+        System.out.println("Lagerplatz : Ziegel");
+
+        double gesamtGewicht2 = 0;
+        double gesamtVolumen2 = 0;
+
+        for (Material mat : lagerplatz2.getMaterialListe()) {
+            gesamtGewicht2 += mat.getGewicht();
+            gesamtVolumen2 += mat.getVolumen();
+        }
+
+        System.out.println("Gesamtvolumen: " + gesamtVolumen2);
+        System.out.println("Gesamtgewicht: " + gesamtGewicht2);
         //TODO END A6
     }
      
